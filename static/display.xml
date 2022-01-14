@@ -1,0 +1,11 @@
+<? xml version="1.0" encoding="utf-8" ?>
+<div>
+    <div class="imgarea">
+        <img class="sp" src="../img/icon-256.png"/>
+        <img class="pc" src="../img/80132.jpg"/>
+    </div>
+    <div class="textarea">
+        <button onclick="Play()"><p>Play</p></button>
+        <button onclick="Setting()" disabled><p>Setting</p></button>
+    </div>
+</div>
