@@ -19,7 +19,8 @@ const Game: React.VFC<Props> = (props) => {
 
   useEffect(() => {
     if (ctx !== null) {
-      // 絵画処理
+      ctx.fillStyle = '#000000';
+      ctx.fillRect(0, 0, 1500, 1000);
     }
   }, [ctx]);
 
