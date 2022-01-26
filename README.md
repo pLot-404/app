@@ -4,9 +4,9 @@ Web謎解きゲーム「山田事件也」のPWAソースコードです。
 アプリインストール　→　https://yamada-jikennya.github.io/app/  
 
 # ゲーム内で使われているデータについて
-当アプリはフリーのBGMやフォントなどの素材を色々な方からお借りしています。  
-従って当アプリ内の素材を使うときはリポジトリからではなく、クレジットに載せたサイトよりダウンロードしてください。  
-リポジトリから直接ダウンロードすることは禁止とさせていただきます。
+当アプリはフリーのBGMやマップタイル、フォントなどの素材を色々な方からお借りしています。  
+当アプリ内の素材を使うときは**リポジトリからではなく、クレジットに載せたサイトよりダウンロードしてください**。  
+リポジトリから**直接ダウンロードすることは禁止**とさせていただきます。
 
 # クレジット(敬称略)
 ## システム作成に使用
@@ -18,6 +18,7 @@ g_コミック古印体フォント-教漢版       [玉英](https://material.an
 あずきフォント&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;[日向梓](http://azukifont.com/font/azuki.html)  
 和田研細丸ゴシック &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;[rareearth](https://ja.osdn.net/projects/jis2004/)  
 たぬき油性マジック &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;[たぬき侍](https://tanukifont.com/tanuki-permanent-marker/)  
-
+## マップタイル提供
+学校タイルセット&emsp;&emsp;&emsp;&emsp;[コミュ将](https://tm.lucky-duet.com/viewtopic.php?t=2045)
 ### 素材・サービスを提供してくださった皆さん、本当に有難うございました！
 ※Seasonが進むにつれ、クレジットが追加される可能性があります。

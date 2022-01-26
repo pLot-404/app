@@ -23,13 +23,8 @@
   src: url('./font/TanukiMagic.ttf') format('truetype');
 }
 
-$color: #e30;
-$dummy-test-color: #d0d;
-
-.test {
-  color: $color;
-}
-
-.dummy-text {
-  color: $dummy-test-color;
-}
+$koin:'g_コミック古印体フォント-教漢版';
+$onryo:'怨霊';
+$azuki:'あずきフォント';
+$wadaken:'和田研細丸ゴシック';
+$tanuki:'たぬき油性マジック';
