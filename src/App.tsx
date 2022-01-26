@@ -4,7 +4,7 @@ import Game from './modules/Game';
 
 const App: React.VFC = () => (
   <div>
-    <Game />
+    <Game height={1000} width={1500} />
   </div>
 );
 
