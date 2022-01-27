@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 type Props = {
   width: number;
@@ -7,7 +7,14 @@ type Props = {
 
 const Game: React.VFC<Props> = (props) => {
   const [ctx, setCtx] = useState<CanvasRenderingContext2D | null>(null);
+  const reqIdRef = useRef();
   const { width, height } = props;
+
+  const mainloop = () => {
+    ctx.fillStyle = "#000000";
+    ctx.fillRect(0, 0, width, height);
+    reqIdRef.current = requestAnimationFrame(mainloop);
+  };
 
   useEffect(() => {
     const canvas = document.getElementById("canvas") as HTMLCanvasElement;
@@ -19,10 +26,10 @@ const Game: React.VFC<Props> = (props) => {
 
   useEffect(() => {
     if (ctx !== null) {
-      ctx.fillStyle = "#000000";
-      ctx.fillRect(0, 0, width, height);
+      mainloop();
     }
-  }, [ctx]);
+    return () => cancelAnimationFrame(reqIdRef);
+  }, [ctx, mainloop]);
 
   return <canvas id="canvas" />;
 };
