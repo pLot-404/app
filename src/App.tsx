@@ -1,11 +1,13 @@
 /* eslint-disable import/extensions */
-import React from 'react';
-import Game from './modules/Game';
+import React from "react";
+import Game from "./modules/Game";
+import { useWindowSize } from "./modules/useWindowSize";
 
-const App: React.VFC = () => (
+const App: React.VFC = () => {
+  const { width, height } = useWindowSize();
   <div>
-    <Game height={1000} width={1500} />
-  </div>
-);
+    <Game height={height} width={width} />
+  </div>;
+};
 
 export default App;

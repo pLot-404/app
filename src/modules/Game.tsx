@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 
 type Props = {
   width: number;
@@ -10,17 +10,17 @@ const Game: React.VFC<Props> = (props) => {
   const { width, height } = props;
 
   useEffect(() => {
-    const canvas = document.getElementById('canvas') as HTMLCanvasElement;
+    const canvas = document.getElementById("canvas") as HTMLCanvasElement;
     canvas.width = width;
     canvas.height = height;
-    const context: CanvasRenderingContext2D | null = canvas.getContext('2d');
+    const context: CanvasRenderingContext2D | null = canvas.getContext("2d");
     setCtx(context);
   }, []);
 
   useEffect(() => {
     if (ctx !== null) {
-      ctx.fillStyle = '#000000';
-      ctx.fillRect(0, 0, 1500, 1000);
+      ctx.fillStyle = "#000000";
+      ctx.fillRect(0, 0, width, height);
     }
   }, [ctx]);
 
