@@ -10,6 +10,7 @@ const useWindowSize = () => {
   };
 
   const [windowSize, setWindowSize] = useState(getWindowSize());
+
   useEffect(() => {
     const onResize = () => {
       setWindowSize(getWindowSize());

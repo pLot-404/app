@@ -1,4 +1,3 @@
-/* eslint-disable import/extensions */
 import React from 'react';
 import Game from './modules/Game';
 import useWindowSize from './modules/useWindowSize';
