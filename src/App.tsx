@@ -6,7 +6,7 @@ const App: React.VFC = () => {
   const { width, height } = useWindowSize();
   return (
     <div>
-      <Game height={height} width={width} />
+      <Game height={height * 0.95} width={width * 0.95} />
     </div>
   );
 };
