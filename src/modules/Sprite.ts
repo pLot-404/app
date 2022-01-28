@@ -12,11 +12,15 @@ class Sprite {
   }
 
   update(ctx: CanvasRenderingContext2D) {
+    console.log('update')
     this.render(ctx);
   }
 
   render(ctx: CanvasRenderingContext2D) {
+    this.img.onload = () => {
+    console.log('loaded!');
     ctx.drawImage(this.img, this.x, this.y);
+    }
   }
 }
 
