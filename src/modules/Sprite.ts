@@ -7,7 +7,7 @@ class Sprite {
 
   constructor(img: string) {
     this.img = new Image();
-    img.onload = () => {
+    this.img.onload = () => {
       [this.x, this.y] = [0, 0];
     }
     this.img.src = img;

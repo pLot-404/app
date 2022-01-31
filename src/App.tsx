@@ -36,7 +36,7 @@ const App: React.VFC = () => {
   /* 状態にコンテキストが登録されたらmainloop開始 */
   useEffect(() => {
     if (ctx !== null) {
-      const school:Sprite = new Sprite('./img/school_A5.png');
+      const school: Sprite = new Sprite("./img/school_A5.png");
       add(school);
       mainloop();
     }
