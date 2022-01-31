@@ -1,39 +1,50 @@
-import React, { useState } from 'react';
-import Game from './modules/Game';
-import Sprite from './modules/Sprite';
-import useWindowSize from './modules/useWindowSize';
+import React, { useState, useEffect, useCallback, useRef } from "react";
+import Sprite from "./modules/Sprite";
+import useWindowSize from "./modules/useWindowSize";
 
 const App: React.VFC = () => {
   const { width, height } = useWindowSize();
   const [objs, setObjs] = useState<Sprite[]>([]);
-  // let add: Sprite;
-  let addFlag = false;
-  // 画像のスプライト生成
-  const add = new Sprite('./img/school_A5.png');
+  const [ctx, setCtx] = useState<CanvasRenderingContext2D | null>(null);
+  const reqIdRef = useRef(0);
 
-  const handleAdd = (obj: Sprite) => {
-    const ar = objs.concat([obj]);
-    setObjs(ar);
-    console.log("add")
-  };
+  /* メソッド定義 */
+  const mainloop = useCallback(() => {
+    if (ctx !== null) {
+      ctx.fillStyle = "#000000";
+      ctx.fillRect(0, 0, width, height);
 
-  if (objs.indexOf(add) === -1) {
-    addFlag = true;
-  }
+      for (let i = 0; i <= objs.length - 1; i++) {
+        objs[i].update(ctx);
+      }
 
-  console.log(addFlag)
+      reqIdRef.current = requestAnimationFrame(mainloop);
+    }
+  }, [ctx, height, objs, width]);
 
-  return (
-    <div>
-      <Game
-        height={height * 0.95}
-        width={width * 0.95}
-        objs={objs}
-        onAdd={addFlag ? () => handleAdd(add) : null}
-        add={addFlag ? add:null}
-      />
-    </div>
-  );
+  const add = (obj: Sprite) => setObjs(objs.concat([obj]));
+
+  /* canvas要素を取得・初期化 */
+  useEffect(() => {
+    const canvas = document.getElementById("canvas") as HTMLCanvasElement;
+    canvas.width = width;
+    canvas.height = height;
+    const context: CanvasRenderingContext2D | null = canvas.getContext("2d");
+    setCtx(context);
+  }, [width, height]);
+
+  /* 状態にコンテキストが登録されたらmainloop開始 */
+  useEffect(() => {
+    if (ctx !== null) {
+      const school:Sprite = new Sprite('./img/school_A5.png');
+      add(school);
+      mainloop();
+    }
+    return () => cancelAnimationFrame(reqIdRef.current);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [ctx]);
+
+  return <canvas id="canvas" />;
 };
 
 export default App;
