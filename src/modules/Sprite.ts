@@ -7,10 +7,10 @@ class Sprite {
 
   constructor(img: string) {
     this.img = new Image();
+    this.img.src = img;
     this.img.onload = () => {
       [this.x, this.y] = [0, 0];
     }
-    this.img.src = img;
   }
 
   update(ctx: CanvasRenderingContext2D) {
