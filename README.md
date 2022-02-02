@@ -10,7 +10,6 @@ Web謎解きゲーム「山田事件也」のPWAソースコードです。
 
 # クレジット(敬称略)
 ## システム作成に使用
-アプリ雛形作成&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;[create-react-app](https://create-react-app.dev/)  
 サーバー提供&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;[Github Pages](https://docs.github.com/ja/pages/getting-started-with-github-pages/about-github-pages)
 ## フォント提供
 g_コミック古印体フォント-教漢版       [玉英](https://material.animehack.jp/font_gcomickoin.html)  
