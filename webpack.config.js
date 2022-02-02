@@ -20,6 +20,25 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.scss$/i,
+        use: [
+          {
+            loader: "style-loader",
+          },
+          {
+            loader: "css-loader",
+          },
+          {
+            loader: "sass-loader",
+            options: {
+              sassOptions: {
+                outputStyle: "expanded",
+              },
+            },
+          },
+        ],
+      },
+      {
         test: /\.ts?$/, //build対象（loaderを適用するファイル）を指定
         loader: "ts-loader", //適用するloaderを指定
       },
