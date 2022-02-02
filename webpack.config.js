@@ -1,6 +1,6 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const CopyWebpackPlugin = require("copy-webpack-plugin")
+const CopyWebpackPlugin = require("copy-webpack-plugin");
 
 module.exports = {
   //モードをdevelopment、production、noneから設定（必須）
@@ -43,9 +43,7 @@ module.exports = {
       filename: "index.html", //生成するHTMLファイル名
     }),
     new CopyWebpackPlugin({
-      patterns: [
-        { from: "./public", to: "/" },
-      ],
+      patterns: [{ from: "./public/static", to: "./" }],
     }),
   ],
 };
