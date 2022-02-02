@@ -1,6 +1,8 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+
 
 module.exports = {
   //モードをdevelopment、production、noneから設定（必須）
@@ -12,7 +14,7 @@ module.exports = {
   //ファイルの出力設定
   output: {
     path: path.join(__dirname, "/dist"), //出力先のディレクトリ（絶対パスで指定）
-    filename: "bundle.js", //出力ファイル名
+    filename: "js/bundle.js", //出力ファイル名
   },
   //デバッグのためのSourceMap（ビルド前後の対応関係を記述したファイル）の出力設定
   devtool: "inline-source-map",
@@ -23,8 +25,8 @@ module.exports = {
         test: /\.scss$/i,
         use: [
           {
-            loader: "style-loader",
-          },
+						loader: MiniCssExtractPlugin.loader,
+					},
           {
             loader: "css-loader",
           },
@@ -64,5 +66,9 @@ module.exports = {
     new CopyWebpackPlugin({
       patterns: [{ from: "./public/static", to: "./" }],
     }),
+    new MiniCssExtractPlugin({
+			filename: 'css/style.css',
+			ignoreOrder: true,
+		})
   ],
 };
