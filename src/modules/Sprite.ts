@@ -26,7 +26,7 @@ class Sprite {
     ) {
       return;
     }
-    const ctx = canvas.getContext("2d");
+    const ctx = canvas.getContext("2d") as CanvasRenderingContext2D;
 
     const xIndex = this.index % (this.img.width / this.width);
     const yIndex = ~~(this.index / (this.img.width / this.width));

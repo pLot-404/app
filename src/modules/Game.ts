@@ -7,7 +7,8 @@ class Game {
 
   constructor(width: number = 320, height: number = 600) {
     this.canvas = document.createElement("canvas");
-    document.getElementById("root").appendChild(this.canvas);
+    const root = document.getElementById("root");
+    if (root) root.appendChild(this.canvas);
     [this.canvas.width, this.canvas.height] = [width, height];
 
     this.objs = [];
@@ -22,7 +23,7 @@ class Game {
   }
 
   mainloop() {
-    const ctx = this.canvas.getContext("2d");
+    const ctx = this.canvas.getContext("2d") as CanvasRenderingContext2D;
     ctx.fillStyle = "#000";
     ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
 
