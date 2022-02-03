@@ -1,6 +1,6 @@
 import Game from "./modules/Game";
 import Sprite from "./modules/Sprite";
-import './css/style.module.scss';
+import "./css/style.module.scss";
 
 window.addEventListener("load", () => {
   const game = new Game(window.innerWidth * 0.95, window.innerHeight * 0.95);
