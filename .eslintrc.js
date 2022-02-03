@@ -8,6 +8,23 @@ module.exports = {
   parserOptions: {
     project: "./tsconfig.json",
   },
+  settings: {
+    "import/extensions": [".js",  ".ts", ".scss"],
+    "import/parsers": {
+      "@typescript-eslint/parser": [".ts"],
+    },
+    "import/resolver": {
+      node: {
+        extensions: [".js",  ".ts"],
+      },
+    },
+  },
   plugins: ["@typescript-eslint"],
-  rules: {},
+  rules: {
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      { js: "never", ts: "never",scss:"never" },
+    ],
+  },
 };
