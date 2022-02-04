@@ -2,11 +2,12 @@ const path = require('path');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const StylelintPlugin = require('stylelint-webpack-plugin');
 
 module.exports = {
   devtool: 'source-map',
-  // mode: 'proguction',
-  mode: 'development',
+  mode: 'production',
 
   // メインとなるjavascriptファイル（エントリーポイント）
   entry: './src/App.ts',
@@ -23,7 +24,7 @@ module.exports = {
         test: /\.scss$/i,
         use: [
           {
-            loader: 'style-loader',
+            loader: MiniCssExtractPlugin.loader,
           },
           {
             loader: 'css-loader',
@@ -69,6 +70,10 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: 'css/style.css',
       ignoreOrder: true,
+    }),
+    new CleanWebpackPlugin(),
+    new StylelintPlugin({
+      fix: true,
     }),
   ],
 };
