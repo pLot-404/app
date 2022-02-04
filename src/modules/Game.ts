@@ -36,7 +36,7 @@ class Game {
 
     const eventListener = (e) => {
       e.preventDefault();
-      for(let i in this.keyMap){
+      for(const i in this.keyMap){
         switch(e.type){
           case "keydown":
             

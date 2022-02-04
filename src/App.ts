@@ -13,7 +13,7 @@ const keys = {
 
 window.addEventListener("load", () => {
   const game = new Game(window.innerWidth * 0.95, window.innerHeight * 0.95);
-  for (let i in keys) {
+  for (const i in keys) {
     game.setKeyBind(i, keys[i]);
   }
 
