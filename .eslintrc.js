@@ -3,19 +3,19 @@ module.exports = {
     browser: true,
     es2021: true,
   },
-  extends: ["airbnb-base", "airbnb-typescript", "prettier"],
+  extends: ["airbnb-base", "airbnb-base-typescript", "prettier"],
   parser: "@typescript-eslint/parser",
   parserOptions: {
     project: "./tsconfig.json",
   },
   settings: {
-    "import/extensions": [".js",  ".ts", ".scss"],
+    "import/extensions": [".js", ".ts", ".scss"],
     "import/parsers": {
       "@typescript-eslint/parser": [".ts"],
     },
     "import/resolver": {
       node: {
-        extensions: [".js",  ".ts"],
+        extensions: [".js", ".ts", ".scss"],
       },
     },
   },
@@ -24,7 +24,7 @@ module.exports = {
     "import/extensions": [
       "error",
       "ignorePackages",
-      { js: "never", ts: "never",scss:"never" },
+      { js: "never", ts: "never", scss: "never" },
     ],
   },
 };
