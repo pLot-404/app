@@ -7,7 +7,7 @@ class Sprite {
     public y: number = 0,
     public width: number = 40,
     public height: number = 40,
-    public index: number = 0
+    public index: number = 0,
   ) {
     this.img = new Image();
     this.img.src = img;
@@ -26,10 +26,10 @@ class Sprite {
     ) {
       return;
     }
-    const ctx = canvas.getContext("2d") as CanvasRenderingContext2D;
+    const ctx = canvas.getContext('2d') as CanvasRenderingContext2D;
 
     const xIndex = this.index % (this.img.width / this.width);
-    const yIndex = ~~(this.index / (this.img.width / this.width));
+    const yIndex = Math.floor(this.index / (this.img.width / this.width));
     ctx.drawImage(
       this.img,
       this.width * xIndex,
@@ -39,7 +39,7 @@ class Sprite {
       this.x,
       this.y,
       this.width,
-      this.height
+      this.height,
     );
   }
 }

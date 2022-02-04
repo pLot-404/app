@@ -1,6 +1,6 @@
-import Game from "./modules/Game";
-import Sprite from "./modules/Sprite";
-import "./css/Style";
+import Game from './modules/Game';
+import Sprite from './modules/Sprite';
+import './css/Style.scss';
 
 const keys = {
   up: [87, 104, 38], // w,テンキー8,↑
@@ -11,17 +11,19 @@ const keys = {
   discard: [27, 88], // Esc,x
 };
 
-window.addEventListener("load", () => {
+window.addEventListener('load', () => {
   const game = new Game(window.innerWidth * 0.95, window.innerHeight * 0.95);
   for (const i in keys) {
-    game.setKeyBind(i, keys[i]);
+    if (keys && Object.prototype.hasOwnProperty.call(keys, i)) {
+      game.setKeyBind(i, keys[i]);
+    }
   }
 
-  window.addEventListener("resize", () => {
+  window.addEventListener('resize', () => {
     game.resize(window.innerWidth * 0.95, window.innerHeight * 0.95);
   });
 
-  const school = new Sprite("./img/school_A5.png");
+  const school = new Sprite('./img/school_A5.png');
   game.add(school);
 
   game.start();

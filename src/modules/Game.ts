@@ -1,4 +1,4 @@
-import Sprite from "./Sprite";
+import Sprite from './Sprite';
 
 interface keyEvent {
   keyCode: number[];
@@ -16,9 +16,9 @@ class Game {
 
   public keyMap: key;
 
-  constructor(width: number = 320, height: number = 600) {
-    this.canvas = document.createElement("canvas");
-    const root = document.getElementById("root");
+  constructor(width = 320, height = 600) {
+    this.canvas = document.createElement('canvas');
+    const root = document.getElementById('root');
     if (root) root.appendChild(this.canvas);
     [this.canvas.width, this.canvas.height] = [width, height];
 
@@ -27,27 +27,29 @@ class Game {
     this.keyMap = {};
   }
 
-  resize(width: number = 320, height: number = 600) {
+  resize(width = 320, height = 600) {
     [this.canvas.width, this.canvas.height] = [width, height];
   }
 
   start() {
     this.mainloop();
 
-    const eventListener = (e) => {
-      e.preventDefault();
-      for(const i in this.keyMap){
-        switch(e.type){
-          case "keydown":
-            
-        }
-      }
-    };
+    // const eventListener = (e) => {
+    //   e.preventDefault();
+    //   for (const i in this.keyMap) {
+    //     if (this.keyMap && Object.prototype.hasOwnProperty.call(this.keyMap, i))
+    //       switch (e.type) {
+    //         // case 'keydown':
+    //         default:
+    //           return;
+    //       }
+    //   }
+    // };
   }
 
   mainloop() {
-    const ctx = this.canvas.getContext("2d") as CanvasRenderingContext2D;
-    ctx.fillStyle = "#000";
+    const ctx = this.canvas.getContext('2d') as CanvasRenderingContext2D;
+    ctx.fillStyle = '#000';
     ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
 
     for (let i = 0; i < this.objs.length; i++) {
