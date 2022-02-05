@@ -1,13 +1,6 @@
 import Sprite from "./Sprite";
 import MultiEventListener from "./MultiEventListener";
 
-// window.addEventListener("keydown", (e)=>{
-//     e.preventDefault();
-//     const code  = e.code;
-//     const key = e.key;
-
-//   document.getElementById('root').innerHTML = '<p>code:'+code+'</p><p>key:'+key+'</p>';
-// });
 
 interface keyEvent {
   keyCode: number[];
@@ -72,9 +65,9 @@ class Game {
     this.objs = this.objs.concat([obj]);
   }
 
-  setKeyBind(name: string, code: number[]) {
+  setKeyBind(name: string, codes: string[]) {
     this.keyMap[name] = {
-      keyCode: code,
+      code: codes,
       push: false,
     };
   }
