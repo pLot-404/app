@@ -1,4 +1,13 @@
-import Sprite from './Sprite';
+import Sprite from "./Sprite";
+import MultiEventListener from "./MultiEventListener";
+
+// window.addEventListener("keydown", (e)=>{
+//     e.preventDefault();
+//     const code  = e.code;
+//     const key = e.key;
+
+//   document.getElementById('root').innerHTML = '<p>code:'+code+'</p><p>key:'+key+'</p>';
+// });
 
 interface keyEvent {
   keyCode: number[];
@@ -17,8 +26,8 @@ class Game {
   public keyMap: key;
 
   constructor(width = 320, height = 600) {
-    this.canvas = document.createElement('canvas');
-    const root = document.getElementById('root');
+    this.canvas = document.createElement("canvas");
+    const root = document.getElementById("root");
     if (root) root.appendChild(this.canvas);
     [this.canvas.width, this.canvas.height] = [width, height];
 
@@ -34,22 +43,22 @@ class Game {
   start() {
     this.mainloop();
 
-    // const eventListener = (e) => {
-    //   e.preventDefault();
-    //   for (const i in this.keyMap) {
-    //     if (this.keyMap && Object.prototype.hasOwnProperty.call(this.keyMap, i))
-    //       switch (e.type) {
-    //         // case 'keydown':
-    //         default:
-    //           return;
-    //       }
-    //   }
-    // };
+    MultiEventListener(window, "keydown keyup", (e) => {
+      e.preventDefault();
+      for (const i in this.keyMap) {
+        if (this.keyMap && Object.prototype.hasOwnProperty.call(this.keyMap, i))
+          switch (e.type) {
+            case "keydown":
+            default:
+              return;
+          }
+      }
+    });
   }
 
   mainloop() {
-    const ctx = this.canvas.getContext('2d') as CanvasRenderingContext2D;
-    ctx.fillStyle = '#000';
+    const ctx = this.canvas.getContext("2d") as CanvasRenderingContext2D;
+    ctx.fillStyle = "#000";
     ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
 
     for (let i = 0; i < this.objs.length; i++) {
