@@ -2,20 +2,20 @@ import Game from './modules/Game';
 import Sprite from './modules/Sprite';
 import './css/Style.scss';
 
-const keys = {
-  up: [87, 104, 38], // w,テンキー8,↑
-  down: [83, 98, 40], // s,テンキー2,↓
-  right: [68, 102, 39], // d,テンキー6,→
-  left: [65, 100, 37], // a,テンキー4,←
-  confirm: [13, 90], // Enter,z
-  discard: [27, 88], // Esc,x
+const codes = {
+  up: ['KeyW', 'Numpad8', 'ArrowUp'], // w,テンキー8,↑
+  down: ['KeyS', 'Numpad2', 'ArrowDown'], // s,テンキー2,↓
+  right: ['KeyD', 'Numpad6', 'ArrowRight'], // d,テンキー6,→
+  left: ['KeyA', 'Numpad4', 'ArrowLeft'], // a,テンキー4,←
+  confirm: ['Enter', 'KeyZ'], // Enter,z
+  discard: ['Escape', 'KeyX'], // Esc,x
 };
 
 window.addEventListener('load', () => {
   const game = new Game(window.innerWidth * 0.95, window.innerHeight * 0.95);
-  for (const i in keys) {
-    if (keys && Object.prototype.hasOwnProperty.call(keys, i)) {
-      game.setKeyBind(i, keys[i]);
+  for (const i in codes) {
+    if (codes && Object.prototype.hasOwnProperty.call(codes, i)) {
+      game.setKeyBind(i, codes[i]);
     }
   }
 

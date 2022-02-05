@@ -2,7 +2,7 @@ import Sprite from './Sprite';
 import MultiEventListener from './MultiEventListener';
 
 interface keyEvent {
-  keyCode: number[];
+  code: string[];
   push: boolean;
 }
 
@@ -44,7 +44,7 @@ class Game {
           if (this.keyMap && Object.prototype.hasOwnProperty.call(this.keyMap, i))
             switch (e.type) {
               case 'keydown':
-                
+                break;
               default:
                 return;
             }
@@ -69,9 +69,9 @@ class Game {
     this.objs = this.objs.concat([obj]);
   }
 
-  setKeyBind(name: string, code: number[]) {
+  setKeyBind(name: string, codes: string[]) {
     this.keyMap[name] = {
-      keyCode: code,
+      code: codes,
       push: false,
     };
   }
