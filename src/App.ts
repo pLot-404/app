@@ -19,13 +19,11 @@ window.addEventListener('load', () => {
     }
   }
 
-  console.log(game.keyMap);
-
   window.addEventListener('resize', () => {
     game.resize(window.innerWidth * 0.95, window.innerHeight * 0.95);
   });
 
-  const school = new Sprite('/img/schoolinside.png');
+  const school = new Sprite('./img/schoolinside.png');
   game.add(school);
 
   game.start();
