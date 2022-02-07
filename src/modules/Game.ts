@@ -35,22 +35,18 @@ class Game {
   start() {
     this.mainloop();
 
-    MultiEventListener(
-      window,
-      'keydown keyup',
-      (e: { preventDefault: () => void; type: string }) => {
-        e.preventDefault();
-        for (const i in this.keyMap) {
-          if (this.keyMap && Object.prototype.hasOwnProperty.call(this.keyMap, i))
-            switch (e.type) {
-              case 'keydown':
-                break;
-              default:
-                return;
-            }
-        }
-      },
-    );
+    MultiEventListener(window, 'keydown keyup', (e: Event) => {
+      e.preventDefault();
+      for (const i in this.keyMap) {
+        if (this.keyMap && Object.prototype.hasOwnProperty.call(this.keyMap, i))
+          switch (e.type) {
+            case 'keydown':
+              break;
+            default:
+              return;
+          }
+      }
+    });
   }
 
   mainloop() {

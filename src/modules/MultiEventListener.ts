@@ -1,7 +1,7 @@
 const MultiEventListener = (
   element: Element | null | Window,
   eventNames: string,
-  listener: (e: { preventDefault: () => void; type: string }) => void,
+  listener: (e: Event) => void,
 ): void => {
   const target = element as EventTarget;
   const events = eventNames.split(' ');
