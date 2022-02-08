@@ -1,5 +1,5 @@
-import Sprite from "./Sprite";
-import MultiEventListener from "./MultiEventListener";
+import Sprite from './Sprite';
+import MultiEventListener from './MultiEventListener';
 
 // keyMap用の型定義
 interface key {
@@ -20,18 +20,18 @@ keyMap: キーボードと動作の対応
 */
 
   public canvas: HTMLCanvasElement;
-  /* ゲームを表示するキャンバス*/
+  /* ゲームを表示するキャンバス */
 
   public objs: Sprite[];
-  /* ゲームで表示するスプライト一覧*/
+  /* ゲームで表示するスプライト一覧 */
 
   public keyMap: key;
-  /*キーボードと動作の対応 */
+  /* キーボードと動作の対応 */
 
   constructor(width = 320, height = 600) {
     // キャンバスの生成とrootへの追加
-    this.canvas = document.createElement("canvas");
-    const root = document.getElementById("root");
+    this.canvas = document.createElement('canvas');
+    const root = document.getElementById('root');
     if (root) root.appendChild(this.canvas);
 
     // 大きさを設定
@@ -54,17 +54,17 @@ keyMap: キーボードと動作の対応
     this.mainloop();
 
     // キーが押される・離されるときにkeyMapのフラグを変化
-    MultiEventListener(window, "keydown keyup", (e: Event) => {
+    MultiEventListener(window, 'keydown keyup', (e: KeyboardEvent): void => {
       e.preventDefault();
       for (const i in this.keyMap) {
         if (this.keyMap && Object.prototype.hasOwnProperty.call(this.keyMap, i))
           switch (e.type) {
-            case "keydown":
+            case 'keydown':
               if (this.keyMap[i].code.indexOf(e.code) !== -1) {
                 this.keyMap[i].push = true;
               }
               break;
-            case "keyup":
+            case 'keyup':
               if (this.keyMap[i].code.indexOf(e.code) !== -1) {
                 this.keyMap[i].push = false;
               }
@@ -79,8 +79,8 @@ keyMap: キーボードと動作の対応
 
   mainloop() {
     // コンテキストを取得して塗りつぶす
-    const ctx = this.canvas.getContext("2d") as CanvasRenderingContext2D;
-    ctx.fillStyle = "#000";
+    const ctx = this.canvas.getContext('2d') as CanvasRenderingContext2D;
+    ctx.fillStyle = '#000';
     ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
 
     // すべてのオブジェクトを再絵画

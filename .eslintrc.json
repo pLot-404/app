@@ -42,6 +42,7 @@
         "message": "`with` is disallowed in strict mode because it makes code impossible to predict and optimize."
       }
     ],
-    "no-plusplus": ["error", { "allowForLoopAfterthoughts": true }]
+    "no-plusplus": ["error", { "allowForLoopAfterthoughts": true }],
+    "class-methods-use-this": ["error", { "exceptMethods": ["eventHandler"] }]
   }
 }
