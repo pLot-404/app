@@ -60,7 +60,16 @@ keyMap: キーボードと動作の対応
         if (this.keyMap && Object.prototype.hasOwnProperty.call(this.keyMap, i))
           switch (e.type) {
             case "keydown":
+              if (this.keyMap[i].code.indexOf(e.code) !== -1) {
+                this.keyMap[i].push = true;
+              }
               break;
+            case "keyup":
+              if (this.keyMap[i].code.indexOf(e.code) !== -1) {
+                this.keyMap[i].push = false;
+              }
+              break;
+
             default:
               return;
           }

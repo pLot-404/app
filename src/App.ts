@@ -29,7 +29,16 @@ window.addEventListener("load", () => {
   });
 
   // スプライト生成・追加
-  const school = new Sprite("./img/schoolinside.png");
+  const school = new Sprite("./img/schoolinside.png", 0, 0, 40, 40, 1);
+
+  // イベントハンドラのオーバーライド
+  school.eventHandler = () => {
+    if (game.keyMap.up.push) school.y -= 4;
+    if (game.keyMap.down.push) school.y += 4;
+    if (game.keyMap.right.push) school.x += 4;
+    if (game.keyMap.left.push) school.x -= 4;
+  };
+
   game.add(school);
 
   // ゲームを開始する

@@ -18,6 +18,8 @@ class Sprite {
   update(canvas: HTMLCanvasElement) {
     // レンダーを呼び出す
     this.render(canvas);
+    // イベントハンドラを呼び出す
+    this.eventHandler();
   }
 
   render(canvas: HTMLCanvasElement) {
@@ -50,6 +52,10 @@ class Sprite {
       this.width,
       this.height
     );
+  }
+
+  eventHandler() {
+    /* オーバーライドする */
   }
 }
 
