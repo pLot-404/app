@@ -6,8 +6,8 @@ class Sprite {
     img: string,
     public x: number = 0, // 初期絵画位置x
     public y: number = 0, // 初期絵画位置y
-    public width: number = 40, // 絵画サイズ幅
-    public height: number = 40, // 絵画サイズ高さ
+    public width: number = 48, // 絵画サイズ幅
+    public height: number = 48, // 絵画サイズ高さ
     public index: number = 0, // 左上から数えたタイルの番号
   ) {
     // 画像の初期化
