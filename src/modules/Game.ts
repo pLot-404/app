@@ -1,5 +1,5 @@
-import Sprite from './Sprite';
-import MultiEventListener from './MultiEventListener';
+import Scene from "./Scene";
+import MultiEventListener from "./MultiEventListener";
 
 // keyMap用の型定義
 interface key {
@@ -11,34 +11,37 @@ interface key {
 }
 
 class Game {
-  /*
+  /**
 ゲームエンジン全体の制御
-
-canvas : ゲームを表示するキャンバス
-objs: ゲームで表示するスプライト一覧
-keyMap: キーボードと動作の対応
 */
 
   public canvas: HTMLCanvasElement;
-  /* ゲームを表示するキャンバス */
+  /** ゲームを表示するキャンバス */
 
-  public objs: Sprite[];
-  /* ゲームで表示するスプライト一覧 */
+  // public objs: Sprite[];
+  /** ゲームで表示するスプライト一覧 */
 
   public keyMap: key;
-  /* キーボードと動作の対応 */
+  /** キーボードと動作の対応 */
+
+  public scenes: Scene[];
+  /** ゲームに登場するシーンの一覧*/
+
+  public current: Scene | null;
+  /** 現在のシーン */
 
   constructor(width = 320, height = 600) {
     // キャンバスの生成とrootへの追加
-    this.canvas = document.createElement('canvas');
-    const root = document.getElementById('root');
+    this.canvas = document.createElement("canvas");
+    const root = document.getElementById("root");
     if (root) root.appendChild(this.canvas);
 
     // 大きさを設定
     [this.canvas.width, this.canvas.height] = [width, height];
 
-    // スプライトの初期化
-    this.objs = [];
+    // シーンの初期化
+    this.scenes = [];
+    this.current = null;
 
     // キーマップの初期化
     this.keyMap = {};
@@ -50,21 +53,23 @@ keyMap: キーボードと動作の対応
   }
 
   start() {
+    this.current = this.current || this.scenes[0] || null;
+
     // メインループ
     this.mainloop();
 
     // キーが押される・離されるときにkeyMapのフラグを変化
-    MultiEventListener(window, 'keydown keyup', (e: KeyboardEvent): void => {
+    MultiEventListener(window, "keydown keyup", (e: KeyboardEvent): void => {
       e.preventDefault();
       for (const i in this.keyMap) {
         if (this.keyMap && Object.prototype.hasOwnProperty.call(this.keyMap, i))
           switch (e.type) {
-            case 'keydown':
+            case "keydown":
               if (this.keyMap[i].code.indexOf(e.code) !== -1) {
                 this.keyMap[i].push = true;
               }
               break;
-            case 'keyup':
+            case "keyup":
               if (this.keyMap[i].code.indexOf(e.code) !== -1) {
                 this.keyMap[i].push = false;
               }
@@ -79,22 +84,24 @@ keyMap: キーボードと動作の対応
 
   mainloop() {
     // コンテキストを取得して塗りつぶす
-    const ctx = this.canvas.getContext('2d') as CanvasRenderingContext2D;
-    ctx.fillStyle = '#000';
+    const ctx = this.canvas.getContext("2d") as CanvasRenderingContext2D;
+    ctx.fillStyle = "#000";
     ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
 
-    // すべてのオブジェクトを再絵画
-    for (let i = 0; i < this.objs.length; i++) {
-      this.objs[i].update(this.canvas);
+    this.current.update();
+
+    // 現シーンのすべてのオブジェクトを再絵画
+    for (let i = 0; i < this.current.objs.length; i++) {
+      this.current.objs[i].update(this.canvas);
     }
 
     // ループ
     requestAnimationFrame(this.mainloop.bind(this));
   }
 
-  add(obj: Sprite) {
-    // スプライトを追加
-    this.objs = this.objs.concat([obj]);
+  add(scene: Scene) {
+    // シーンを追加
+    this.scenes = this.scenes.concat([scene]);
   }
 
   setKeyBind(name: string, codes: string[]) {
