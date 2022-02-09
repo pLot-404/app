@@ -37,7 +37,7 @@ window.addEventListener("load", () => {
   const scene = new Scene();
 
   // スプライト生成・追加
-  const school = new Sprite("./img/schoolinside.png", 0, 0, 40, 40, 1);
+  const school = new Sprite("./img/schoolinside.png");
 
   scene.add(school);
 
