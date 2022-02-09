@@ -1,5 +1,5 @@
-import Scene from "./Scene";
-import MultiEventListener from "./MultiEventListener";
+import Scene from './Scene';
+import MultiEventListener from './MultiEventListener';
 
 // keyMap用の型定義
 interface key {
@@ -22,15 +22,15 @@ class Game {
   /** キーボードと動作の対応 */
 
   public scenes: Scene[];
-  /** ゲームに登場するシーンの一覧*/
+  /** ゲームに登場するシーンの一覧 */
 
   public current: Scene | null;
   /** 現在のシーン */
 
   constructor(width = 320, height = 600) {
     // キャンバスの生成とrootへの追加
-    this.canvas = document.createElement("canvas");
-    const root = document.getElementById("root");
+    this.canvas = document.createElement('canvas');
+    const root = document.getElementById('root');
     if (root) root.appendChild(this.canvas);
 
     // 大きさを設定
@@ -56,17 +56,17 @@ class Game {
     this.mainloop();
 
     // キーが押される・離されるときにkeyMapのフラグを変化
-    MultiEventListener(window, "keydown keyup", (e: KeyboardEvent): void => {
+    MultiEventListener(window, 'keydown keyup', (e: KeyboardEvent): void => {
       e.preventDefault();
       for (const i in this.keyMap) {
         if (this.keyMap && Object.prototype.hasOwnProperty.call(this.keyMap, i))
           switch (e.type) {
-            case "keydown":
+            case 'keydown':
               if (this.keyMap[i].code.indexOf(e.code) !== -1) {
                 this.keyMap[i].push = true;
               }
               break;
-            case "keyup":
+            case 'keyup':
               if (this.keyMap[i].code.indexOf(e.code) !== -1) {
                 this.keyMap[i].push = false;
               }
@@ -81,8 +81,8 @@ class Game {
 
   mainloop() {
     // コンテキストを取得して塗りつぶす
-    const ctx = this.canvas.getContext("2d") as CanvasRenderingContext2D;
-    ctx.fillStyle = "#000";
+    const ctx = this.canvas.getContext('2d') as CanvasRenderingContext2D;
+    ctx.fillStyle = '#000';
     ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
 
     this.current.update();

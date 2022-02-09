@@ -1,4 +1,4 @@
-import Sprite from "./Sprite";
+import Sprite from './Sprite';
 
 class Scene {
   objs: Sprite[];
@@ -16,7 +16,11 @@ class Scene {
     this.eventHandler();
   }
 
-  eventHandler() {}
+  eventHandler() {
+    /**
+     * オーバーライドする
+     */
+  }
 }
 
 export default Scene;

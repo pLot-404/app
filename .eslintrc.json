@@ -43,6 +43,7 @@
       }
     ],
     "no-plusplus": ["error", { "allowForLoopAfterthoughts": true }],
-    "class-methods-use-this": ["error", { "exceptMethods": ["eventHandler"] }]
+    "class-methods-use-this": ["error", { "exceptMethods": ["eventHandler"] }],
+    "no-continue": "off"
   }
 }

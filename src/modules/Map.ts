@@ -1,15 +1,15 @@
 export default class Map {
   img: HTMLImageElement;
-  /**絵画する画像 */
+  /** 絵画する画像 */
 
   x: number;
-  /**画像の座標 */
+  /** 画像の座標 */
 
   y: number;
-  /**画像の座標 */
+  /** 画像の座標 */
 
   data: number[][];
-  /**マップデータの二次元配列 */
+  /** マップデータの二次元配列 */
 
   constructor(img: string, public size: number = 40) {
     this.img = new Image();
@@ -32,11 +32,9 @@ export default class Map {
         if (x < -1 * this.size || x > canvas.width) continue;
 
         const xIndex = this.data[i][j] % (this.img.width / this.size);
-        const yIndex = Math.floor(
-          this.data[i][j] / (this.img.width / this.size)
-        );
+        const yIndex = Math.floor(this.data[i][j] / (this.img.width / this.size));
 
-        const ctx = canvas.getContext("2d");
+        const ctx = canvas.getContext('2d');
 
         ctx.drawImage(
           this.img,
@@ -47,11 +45,15 @@ export default class Map {
           x,
           y,
           this.size,
-          this.size
+          this.size,
         );
       }
     }
   }
 
-  eventHandler() {}
+  eventHandler() {
+    /**
+     * オーバーライドする
+     */
+  }
 }
