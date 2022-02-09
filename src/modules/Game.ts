@@ -18,9 +18,6 @@ class Game {
   public canvas: HTMLCanvasElement;
   /** ゲームを表示するキャンバス */
 
-  // public objs: Sprite[];
-  /** ゲームで表示するスプライト一覧 */
-
   public keyMap: key;
   /** キーボードと動作の対応 */
 
