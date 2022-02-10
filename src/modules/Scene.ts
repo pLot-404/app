@@ -1,7 +1,8 @@
-import Sprite from './Sprite';
+import Map from './Map';
+import Tile from './Tile';
 
 class Scene {
-  objs: Sprite[];
+  objs: Array<Map | Tile>;
   /** そのシーンに入っているオブジェクト一覧 */
 
   constructor() {
