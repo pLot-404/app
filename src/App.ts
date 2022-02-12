@@ -1,5 +1,6 @@
 import Game from './modules/Game';
-import Sprite from './modules/Sprite';
+import Map from './modules/Map';
+import Tile from './modules/Tile';
 import Scene from './modules/Scene';
 import './css/Style.scss';
 
@@ -16,6 +17,19 @@ const codes = {
 // 移動速度の定義
 const walkSpeed = 4;
 // const runSpeed = 8;
+
+const mapData = [
+  [11, 11, 11, 11, 11, 11, 11, 11, 11, 11],
+  [11, 10, 10, 10, 10, 10, 10, 10, 10, 11],
+  [11, 4, 4, 4, 4, 4, 4, 4, 4, 11],
+  [11, 4, 11, 4, 4, 11, 11, 11, 4, 11],
+  [11, 4, 11, 11, 11, 11, 10, 10, 4, 11],
+  [11, 4, 11, 10, 10, 11, 4, 4, 4, 11],
+  [11, 4, 11, 4, 4, 11, 11, 11, 4, 11],
+  [11, 4, 9, 4, 4, 9, 10, 11, 4, 11],
+  [11, 4, 4, 4, 4, 4, 4, 11, 4, 11],
+  [11, 11, 11, 11, 11, 11, 11, 11, 11, 11],
+];
 
 window.addEventListener('load', () => {
   // 画面サイズの95%で初期化
@@ -36,8 +50,13 @@ window.addEventListener('load', () => {
   // シーン生成
   const scene = new Scene();
 
-  // スプライト生成・追加
-  const school = new Sprite('./img/kanzaki1.png');
+  // タイルマップ生成
+  const map = new Map('./img/school_A5.png');
+  map.data = mapData;
+  scene.add(map);
+
+  // スプライト（タイル）生成・追加
+  const school = new Tile('./img/kanzaki1.png');
 
   scene.add(school);
 

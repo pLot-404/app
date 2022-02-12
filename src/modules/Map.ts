@@ -11,13 +11,17 @@ export default class Map {
   data: number[][];
   /** マップデータの二次元配列 */
 
-  constructor(img: string, public size: number = 40) {
+  constructor(img: string, public size: number = 48) {
     this.img = new Image();
     this.img.src = img;
 
     [this.x, this.y] = [0, 0];
 
     this.data = [];
+  }
+
+  update(canvas: HTMLCanvasElement) {
+    this.render(canvas);
   }
 
   render(canvas: HTMLCanvasElement) {

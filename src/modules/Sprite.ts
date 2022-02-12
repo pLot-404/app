@@ -4,11 +4,11 @@ class Sprite {
 
   constructor(
     img: string,
-    public x: number = 0, // 初期絵画位置x
-    public y: number = 0, // 初期絵画位置y
     public width: number = 48, // 絵画サイズ幅
     public height: number = 48, // 絵画サイズ高さ
     public index: number = 0, // 左上から数えたタイルの番号
+    public x: number = 0, // 初期絵画位置x
+    public y: number = 0, // 初期絵画位置y
   ) {
     // 画像の初期化
     this.img = new Image();
