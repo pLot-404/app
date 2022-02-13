@@ -51,7 +51,7 @@ window.addEventListener('load', () => {
   const scene = new Scene();
 
   // タイルマップ生成
-  const map = new Map('./img/school_A5.png');
+  const map = new Map('./img/school.png');
   map.data = mapData;
   scene.add(map);
 
