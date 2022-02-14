@@ -16,8 +16,8 @@ const codes = {
 };
 
 // 移動速度の定義
-const walkSpeed = 4;
-// const runSpeed = 8;
+const walkSpeed = 6;
+// const runSpeed = 14;
 
 const floorData = mapData.floor;
 const objectData = mapData.object;
@@ -46,21 +46,33 @@ window.addEventListener('load', () => {
   floor.data = floorData;
   scene.add(floor);
 
-  const objects = new Map('./img/schoolD.png');
+  const objects = new Map('./img/schoolD.png', './img/school.png');
   objects.data = objectData;
   scene.add(objects);
 
   // スプライト（タイル）生成・追加
-  const school = new Tile('./img/kanzaki1.png');
+  const kanzaki = new Tile('./img/kanzaki1.png');
 
-  scene.add(school);
+  objects.add(kanzaki);
 
   // イベントハンドラのオーバーライド
   scene.eventHandler = () => {
-    if (game.keyMap.up.push) school.y -= walkSpeed;
-    if (game.keyMap.down.push) school.y += walkSpeed;
-    if (game.keyMap.right.push) school.x += walkSpeed;
-    if (game.keyMap.left.push) school.x -= walkSpeed;
+    if (game.keyMap.up.push) {
+      floor.y += walkSpeed;
+      objects.y += walkSpeed;
+    }
+    if (game.keyMap.down.push) {
+      floor.y -= walkSpeed;
+      objects.y -= walkSpeed;
+    }
+    if (game.keyMap.right.push) {
+      floor.x -= walkSpeed;
+      objects.x -= walkSpeed;
+    }
+    if (game.keyMap.left.push) {
+      floor.x += walkSpeed;
+      objects.x += walkSpeed;
+    }
   };
 
   game.add(scene);

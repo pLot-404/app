@@ -1,6 +1,11 @@
+import Tile from './Tile';
+
 export default class Map {
   img: HTMLImageElement;
   /** 絵画する画像 */
+
+  altImg: HTMLImageElement | null;
+  /** 別の画像 */
 
   x: number;
   /** 画像の座標 */
@@ -11,17 +16,30 @@ export default class Map {
   data: number[][];
   /** マップデータの二次元配列 */
 
-  constructor(img: string, public size: number = 48) {
+  tiles: Tile[];
+  /** マップ上のタイル */
+
+  constructor(img: string, altImg?: string, public size: number = 48) {
     this.img = new Image();
     this.img.src = img;
+
+    if (altImg) {
+      this.altImg = new Image();
+      this.altImg.src = altImg;
+    }
 
     [this.x, this.y] = [0, 0];
 
     this.data = [];
+    this.tiles = [];
   }
 
   update(canvas: HTMLCanvasElement) {
     this.render(canvas);
+
+    for (let i = 0; i < this.tiles.length; i++) {
+      this.tiles[i].update(canvas);
+    }
   }
 
   render(canvas: HTMLCanvasElement) {
@@ -51,8 +69,28 @@ export default class Map {
           this.size,
           this.size,
         );
+
+        if (this.altImg) {
+          if (this.size * xIndex > this.img.width || this.size * yIndex > this.img.height) {
+            ctx.drawImage(
+              this.altImg,
+              this.size * xIndex,
+              this.size * yIndex,
+              this.size,
+              this.size,
+              x,
+              y,
+              this.size,
+              this.size,
+            );
+          }
+        }
       }
     }
+  }
+
+  add(tile: Tile) {
+    this.tiles = this.tiles.concat([tile]);
   }
 
   eventHandler() {
