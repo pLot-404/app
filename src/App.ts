@@ -15,9 +15,12 @@ const codes = {
   discard: ['Escape', 'KeyX'], // Esc,x
 };
 
+// タイルサイズの定義
+const tileSize = 48;
+
 // 移動速度の定義
 const walkSpeed = 6;
-// const runSpeed = 14;
+const runSpeed = 14;
 
 const floorData = mapData.floor;
 const objectData = mapData.object;
@@ -44,34 +47,40 @@ window.addEventListener('load', () => {
   // タイルマップ生成
   const floor = new Map('./img/school.png');
   floor.data = floorData;
+  floor.x = tileSize * 4 - tileSize / 2;
+  floor.y = tileSize * 3 - tileSize / 2;
   scene.add(floor);
 
   const objects = new Map('./img/schoolD.png', './img/school.png');
   objects.data = objectData;
+  objects.x = tileSize * 4 - tileSize / 2;
+  objects.y = tileSize * 3 - tileSize / 2;
   scene.add(objects);
 
   // スプライト（タイル）生成・追加
   const kanzaki = new Tile('./img/kanzaki1.png');
+  [kanzaki.x, kanzaki.y] = [tileSize * 5 - tileSize / 2, tileSize * 5 - tileSize / 2];
 
   objects.add(kanzaki);
 
   // イベントハンドラのオーバーライド
   scene.eventHandler = () => {
+    // マップの移動（シフトキーが押されていたら走る）
     if (game.keyMap.up.push) {
-      floor.y += walkSpeed;
-      objects.y += walkSpeed;
+      floor.y += game.shift ? runSpeed : walkSpeed;
+      objects.y += game.shift ? runSpeed : walkSpeed;
     }
     if (game.keyMap.down.push) {
-      floor.y -= walkSpeed;
-      objects.y -= walkSpeed;
+      floor.y -= game.shift ? runSpeed : walkSpeed;
+      objects.y -= game.shift ? runSpeed : walkSpeed;
     }
     if (game.keyMap.right.push) {
-      floor.x -= walkSpeed;
-      objects.x -= walkSpeed;
+      floor.x -= game.shift ? runSpeed : walkSpeed;
+      objects.x -= game.shift ? runSpeed : walkSpeed;
     }
     if (game.keyMap.left.push) {
-      floor.x += walkSpeed;
-      objects.x += walkSpeed;
+      floor.x += game.shift ? runSpeed : walkSpeed;
+      objects.x += game.shift ? runSpeed : walkSpeed;
     }
   };
 

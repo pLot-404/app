@@ -12,8 +12,8 @@ interface key {
 
 class Game {
   /**
-ゲームエンジン全体の制御
-*/
+  ゲームエンジン全体の制御
+  */
 
   public canvas: HTMLCanvasElement;
   /** ゲームを表示するキャンバス */
@@ -26,6 +26,9 @@ class Game {
 
   public current: Scene | null;
   /** 現在のシーン */
+
+  public shift: boolean;
+  /** シフトキーのフラグ */
 
   constructor(width = 320, height = 600) {
     // キャンバスの生成とrootへの追加
@@ -42,6 +45,7 @@ class Game {
 
     // キーマップの初期化
     this.keyMap = {};
+    this.shift = false;
   }
 
   resize(width = 320, height = 600) {
@@ -58,6 +62,11 @@ class Game {
     // キーが押される・離されるときにkeyMapのフラグを変化
     MultiEventListener(window, 'keydown keyup', (e: KeyboardEvent): void => {
       e.preventDefault();
+      if (e.shiftKey) {
+        this.shift = true;
+      } else {
+        this.shift = false;
+      }
       for (const i in this.keyMap) {
         if (this.keyMap && Object.prototype.hasOwnProperty.call(this.keyMap, i))
           switch (e.type) {
