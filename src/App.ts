@@ -3,6 +3,7 @@ import Map from './modules/Map';
 import Tile from './modules/Tile';
 import Scene from './modules/Scene';
 import './css/Style.scss';
+import mapData from './data/map.json';
 
 // キーバインドをe.codeで定義
 const codes = {
@@ -18,18 +19,8 @@ const codes = {
 const walkSpeed = 4;
 // const runSpeed = 8;
 
-const mapData = [
-  [11, 11, 11, 11, 11, 11, 11, 11, 11, 11],
-  [11, 10, 10, 10, 10, 10, 10, 10, 10, 11],
-  [11, 4, 4, 4, 4, 4, 4, 4, 4, 11],
-  [11, 4, 11, 4, 4, 11, 11, 11, 4, 11],
-  [11, 4, 11, 11, 11, 11, 10, 10, 4, 11],
-  [11, 4, 11, 10, 10, 11, 4, 4, 4, 11],
-  [11, 4, 11, 4, 4, 11, 11, 11, 4, 11],
-  [11, 4, 9, 4, 4, 9, 10, 11, 4, 11],
-  [11, 4, 4, 4, 4, 4, 4, 11, 4, 11],
-  [11, 11, 11, 11, 11, 11, 11, 11, 11, 11],
-];
+const floorData = mapData.floor;
+const objectData = mapData.object;
 
 window.addEventListener('load', () => {
   // 画面サイズの95%で初期化
@@ -51,9 +42,13 @@ window.addEventListener('load', () => {
   const scene = new Scene();
 
   // タイルマップ生成
-  const map = new Map('./img/school.png');
-  map.data = mapData;
-  scene.add(map);
+  const floor = new Map('./img/school.png');
+  floor.data = floorData;
+  scene.add(floor);
+
+  const objects = new Map('./img/schoolD.png');
+  objects.data = objectData;
+  scene.add(objects);
 
   // スプライト（タイル）生成・追加
   const school = new Tile('./img/kanzaki1.png');
