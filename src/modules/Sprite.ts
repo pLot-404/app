@@ -1,6 +1,18 @@
 class Sprite {
+  /** 表示する画像 */
   img: HTMLImageElement;
-  /* 表示する画像 */
+
+  /** 横方向の速度 */
+  xSpeed: number;
+
+  /** 縦方向の速度 */
+  ySpeed: number;
+
+  /** スプライトをずらす */
+  shift: {
+    x: number;
+    y: number;
+  };
 
   constructor(
     img: string,
@@ -13,6 +25,9 @@ class Sprite {
     // 画像の初期化
     this.img = new Image();
     this.img.src = img;
+
+    [this.xSpeed, this.ySpeed] = [0, 0];
+    this.shift = { x: 0, y: 0 };
   }
 
   update(canvas: HTMLCanvasElement) {
@@ -20,14 +35,18 @@ class Sprite {
     this.render(canvas);
     // イベントハンドラを呼び出す
     this.eventHandler();
+
+    // 移動する
+    this.x += this.xSpeed;
+    this.y += this.ySpeed;
   }
 
   render(canvas: HTMLCanvasElement) {
     if (
-      this.x < -1 * this.width ||
-      this.x > canvas.width ||
-      this.y < -1 * this.height ||
-      this.y > canvas.height
+      this.x + this.shift.x < -1 * this.width ||
+      this.x + this.shift.x > canvas.width ||
+      this.y + this.shift.y < -1 * this.height ||
+      this.y + this.shift.y > canvas.height
     ) {
       // キャンバスの外にオブジェクトがあるなら絵画しない
       return;
@@ -47,8 +66,8 @@ class Sprite {
       this.height * yIndex,
       this.width,
       this.height,
-      this.x,
-      this.y,
+      this.x + this.shift.x,
+      this.y + this.shift.y,
       this.width,
       this.height,
     );

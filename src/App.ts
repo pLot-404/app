@@ -20,7 +20,7 @@ const tileSize = 48;
 
 // 移動速度の定義
 const walkSpeed = 6;
-const runSpeed = 14;
+const runSpeed = 16;
 
 const floorData = mapData.floor;
 const objectData = mapData.object;
@@ -68,22 +68,28 @@ window.addEventListener('load', () => {
 
   // イベントハンドラのオーバーライド
   scene.eventHandler = () => {
-    // マップの移動（シフトキーが押されていたら走る）
-    if (game.keyMap.up.push) {
-      floor.y += game.shift ? runSpeed : walkSpeed;
-      objects.y += game.shift ? runSpeed : walkSpeed;
-    }
-    if (game.keyMap.down.push) {
-      floor.y -= game.shift ? runSpeed : walkSpeed;
-      objects.y -= game.shift ? runSpeed : walkSpeed;
-    }
-    if (game.keyMap.right.push) {
-      floor.x -= game.shift ? runSpeed : walkSpeed;
-      objects.x -= game.shift ? runSpeed : walkSpeed;
-    }
-    if (game.keyMap.left.push) {
-      floor.x += game.shift ? runSpeed : walkSpeed;
-      objects.x += game.shift ? runSpeed : walkSpeed;
+    if (
+      (objects.x - tileSize / 2) % tileSize === 0 &&
+      (objects.y - tileSize / 2) % tileSize === 0
+    ) {
+      [floor.xSpeed, floor.ySpeed, objects.xSpeed, objects.ySpeed] = [0, 0, 0, 0];
+      // マップの移動（シフトキーが押されていたら走る）
+      if (game.keyMap.up.push) {
+        floor.ySpeed += game.shift ? runSpeed : walkSpeed;
+        objects.ySpeed += game.shift ? runSpeed : walkSpeed;
+      }
+      if (game.keyMap.down.push) {
+        floor.ySpeed -= game.shift ? runSpeed : walkSpeed;
+        objects.ySpeed -= game.shift ? runSpeed : walkSpeed;
+      }
+      if (game.keyMap.right.push) {
+        floor.xSpeed -= game.shift ? runSpeed : walkSpeed;
+        objects.xSpeed -= game.shift ? runSpeed : walkSpeed;
+      }
+      if (game.keyMap.left.push) {
+        floor.xSpeed += game.shift ? runSpeed : walkSpeed;
+        objects.xSpeed += game.shift ? runSpeed : walkSpeed;
+      }
     }
   };
 

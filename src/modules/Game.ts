@@ -9,26 +9,24 @@ interface key {
     push: boolean; // キーのいずれかが押されているかの判定
   };
 }
-
-class Game {
-  /**
+/**
   ゲームエンジン全体の制御
   */
-
-  public canvas: HTMLCanvasElement;
+class Game {
   /** ゲームを表示するキャンバス */
+  public canvas: HTMLCanvasElement;
 
-  public keyMap: key;
   /** キーボードと動作の対応 */
+  public keyMap: key;
 
-  public scenes: Scene[];
   /** ゲームに登場するシーンの一覧 */
+  public scenes: Scene[];
 
-  public current: Scene | null;
   /** 現在のシーン */
+  public current: Scene | null;
 
-  public shift: boolean;
   /** シフトキーのフラグ */
+  public shift: boolean;
 
   constructor(width = 320, height = 600) {
     // キャンバスの生成とrootへの追加

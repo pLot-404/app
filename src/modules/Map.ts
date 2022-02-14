@@ -5,7 +5,7 @@ export default class Map {
   /** 絵画する画像 */
 
   altImg: HTMLImageElement | null;
-  /** 別の画像 */
+  /** 代わりの画像 */
 
   x: number;
   /** 画像の座標 */
@@ -19,6 +19,12 @@ export default class Map {
   tiles: Tile[];
   /** マップ上のタイル */
 
+  xSpeed: number;
+  /** 横方向の速度 */
+
+  ySpeed: number;
+  /** 縦方向の速度 */
+
   constructor(img: string, altImg?: string, public size: number = 48) {
     this.img = new Image();
     this.img.src = img;
@@ -28,7 +34,7 @@ export default class Map {
       this.altImg.src = altImg;
     }
 
-    [this.x, this.y] = [0, 0];
+    [this.x, this.y, this.xSpeed, this.ySpeed] = [0, 0, 0, 0];
 
     this.data = [];
     this.tiles = [];
@@ -37,7 +43,11 @@ export default class Map {
   update(canvas: HTMLCanvasElement) {
     this.render(canvas);
 
+    this.x += this.xSpeed;
+    this.y += this.ySpeed;
+
     for (let i = 0; i < this.tiles.length; i++) {
+      this.tiles[i].shift = { x: this.x, y: this.y };
       this.tiles[i].update(canvas);
     }
   }
