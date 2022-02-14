@@ -47,19 +47,22 @@ window.addEventListener('load', () => {
   // タイルマップ生成
   const floor = new Map('./img/school.png');
   floor.data = floorData;
-  floor.x = tileSize * 4 - tileSize / 2;
-  floor.y = tileSize * 3 - tileSize / 2;
+  floor.x = tileSize * (Math.floor(game.canvas.width / tileSize) / 2 - 1) - tileSize / 2;
+  floor.y = tileSize * (Math.floor(game.canvas.height / tileSize) / 2 - 2) - tileSize / 2;
   scene.add(floor);
 
   const objects = new Map('./img/schoolD.png', './img/school.png');
   objects.data = objectData;
-  objects.x = tileSize * 4 - tileSize / 2;
-  objects.y = tileSize * 3 - tileSize / 2;
+  objects.x = tileSize * (Math.floor(game.canvas.width / tileSize) / 2 - 1) - tileSize / 2;
+  objects.y = tileSize * (Math.floor(game.canvas.height / tileSize) / 2 - 2) - tileSize / 2;
   scene.add(objects);
 
   // スプライト（タイル）生成・追加
   const kanzaki = new Tile('./img/kanzaki1.png');
-  [kanzaki.x, kanzaki.y] = [tileSize * 5 - tileSize / 2, tileSize * 5 - tileSize / 2];
+  [kanzaki.x, kanzaki.y] = [
+    (tileSize * Math.floor(game.canvas.width / tileSize)) / 2 - tileSize / 2,
+    (tileSize * Math.floor(game.canvas.height / tileSize)) / 2 - tileSize / 2,
+  ];
 
   objects.add(kanzaki);
 
