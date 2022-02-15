@@ -58,11 +58,16 @@ window.addEventListener('load', () => {
   scene.add(objects);
 
   // スプライト（タイル）生成・追加
+  const to16 = new Tile('./img/school.png', 48, 448); // 透明タイル
+  [to16.x, to16.y] = [tileSize * 103, tileSize * 17];
+  objects.add(to16);
+
   const kanzaki = new Tile('./img/kanzaki1.png');
   [kanzaki.x, kanzaki.y] = [
     (tileSize * Math.floor(game.canvas.width / tileSize)) / 2 - tileSize / 2,
     (tileSize * Math.floor(game.canvas.height / tileSize)) / 2 - tileSize / 2,
   ];
+  kanzaki.sync = false;
 
   objects.add(kanzaki);
 

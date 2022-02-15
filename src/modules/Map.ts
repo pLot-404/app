@@ -47,7 +47,7 @@ export default class Map {
     this.y += this.ySpeed;
 
     for (let i = 0; i < this.tiles.length; i++) {
-      this.tiles[i].shift = { x: this.x, y: this.y };
+      if (this.tiles[i].sync) this.tiles[i].shift = { x: this.x, y: this.y };
       this.tiles[i].update(canvas);
     }
   }
