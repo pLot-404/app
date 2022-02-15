@@ -6,7 +6,6 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const StylelintPlugin = require('stylelint-webpack-plugin');
 
 module.exports = {
-  devtool: 'source-map',
   mode: 'production',
 
   // メインとなるjavascriptファイル（エントリーポイント）
