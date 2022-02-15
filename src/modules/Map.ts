@@ -1,29 +1,32 @@
 import Tile from './Tile';
 
 export default class Map {
-  img: HTMLImageElement;
   /** 絵画する画像 */
+  img: HTMLImageElement;
 
-  altImg: HTMLImageElement | null;
   /** 代わりの画像 */
+  altImg: HTMLImageElement | null;
 
+  /** 画像の座標 */
   x: number;
-  /** 画像の座標 */
 
+  /** 画像の座標 */
   y: number;
-  /** 画像の座標 */
 
-  data: number[][];
   /** マップデータの二次元配列 */
+  data: number[][];
 
-  tiles: Tile[];
   /** マップ上のタイル */
+  tiles: Tile[];
 
-  xSpeed: number;
   /** 横方向の速度 */
+  xSpeed: number;
 
-  ySpeed: number;
   /** 縦方向の速度 */
+  ySpeed: number;
+
+  /** 壁判定 */
+  wall: number[];
 
   constructor(img: string, altImg?: string, public size: number = 48) {
     this.img = new Image();
@@ -38,6 +41,7 @@ export default class Map {
 
     this.data = [];
     this.tiles = [];
+    this.wall = [];
   }
 
   update(canvas: HTMLCanvasElement) {
@@ -49,6 +53,15 @@ export default class Map {
     for (let i = 0; i < this.tiles.length; i++) {
       if (this.tiles[i].sync) this.tiles[i].shift = { x: this.x, y: this.y };
       this.tiles[i].update(canvas);
+
+      this.tiles[i].map = {
+        x: this.tiles[i].sync
+          ? this.tiles[i].x / this.size
+          : (this.tiles[i].x - this.x) / this.size,
+        y: this.tiles[i].sync
+          ? this.tiles[i].y / this.size
+          : (this.tiles[i].y - this.y) / this.size,
+      };
     }
   }
 
@@ -99,7 +112,17 @@ export default class Map {
     }
   }
 
+  isWall(x: number, y: number) {
+    const cantThrough = this.wall.some((i) => i === this.data[y][x]);
+    return cantThrough;
+  }
+
   add(tile: Tile) {
+    // eslint-disable-next-line no-param-reassign
+    tile.map = {
+      x: tile.sync ? tile.x / this.size : (tile.x - this.x) / this.size,
+      y: tile.sync ? tile.y / this.size : (tile.y - this.y) / this.size,
+    };
     this.tiles = this.tiles.concat([tile]);
   }
 
