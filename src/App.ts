@@ -1,6 +1,7 @@
 import Game from './modules/Game';
 import Map from './modules/Map';
 import Tile from './modules/Tile';
+import CharaTile from './modules/CharaTile';
 import Scene from './modules/Scene';
 import './css/Style.scss';
 import mapData from './data/map.json';
@@ -70,7 +71,7 @@ window.addEventListener('load', () => {
   [to16.x, to16.y] = [tileSize * 103, tileSize * 17];
   objects.add(to16);
 
-  const kanzaki = new Tile('./img/kanzaki.png');
+  const kanzaki = new CharaTile('./img/kanzaki.png');
   [kanzaki.x, kanzaki.y] = [
     (tileSize * Math.floor(game.canvas.width / tileSize)) / 2 - tileSize / 2,
     (tileSize * Math.floor(game.canvas.height / tileSize)) / 2 - tileSize / 2,
@@ -79,6 +80,9 @@ window.addEventListener('load', () => {
 
   objects.add(kanzaki);
 
+  // アニメーション用変数
+  let varAnimation = 0;
+
   // イベントハンドラのオーバーライド
   scene.eventHandler = () => {
     if (
@@ -86,22 +90,32 @@ window.addEventListener('load', () => {
       (objects.y - tileSize / 2) % tileSize === 0
     ) {
       [floor.xSpeed, floor.ySpeed, objects.xSpeed, objects.ySpeed] = [0, 0, 0, 0];
+
+      kanzaki.animation = 0;
       // マップの移動（シフトキーが押されていたら走る）
       if (game.keyMap.up.push) {
         floor.ySpeed += game.shift ? runSpeed : walkSpeed;
         objects.ySpeed += game.shift ? runSpeed : walkSpeed;
+
+        kanzaki.direction = 1;
       }
       if (game.keyMap.down.push) {
         floor.ySpeed -= game.shift ? runSpeed : walkSpeed;
         objects.ySpeed -= game.shift ? runSpeed : walkSpeed;
+
+        kanzaki.direction = 0;
       }
       if (game.keyMap.right.push) {
         floor.xSpeed -= game.shift ? runSpeed : walkSpeed;
         objects.xSpeed -= game.shift ? runSpeed : walkSpeed;
+
+        kanzaki.direction = 3;
       }
       if (game.keyMap.left.push) {
         floor.xSpeed += game.shift ? runSpeed : walkSpeed;
         objects.xSpeed += game.shift ? runSpeed : walkSpeed;
+
+        kanzaki.direction = 2;
       }
 
       const afterMove = {
@@ -116,6 +130,12 @@ window.addEventListener('load', () => {
       if (floor.isWall(afterMove.x, afterMove.y) || objects.isWall(afterMove.x, afterMove.y)) {
         [floor.xSpeed, floor.ySpeed, objects.xSpeed, objects.ySpeed] = [0, 0, 0, 0];
       }
+    } else if (
+      (objects.x + tileSize / 2) % (tileSize / 2) === 0 &&
+      (objects.y + tileSize / 2) % (tileSize / 2)
+    ) {
+      varAnimation = (varAnimation + 1) % 2;
+      kanzaki.animation = varAnimation === 0 ? 2 : 1;
     }
   };
 
