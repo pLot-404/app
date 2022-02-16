@@ -70,7 +70,7 @@ window.addEventListener('load', () => {
   [to16.x, to16.y] = [tileSize * 103, tileSize * 17];
   objects.add(to16);
 
-  const kanzaki = new Tile('./img/kanzaki1.png');
+  const kanzaki = new Tile('./img/kanzaki.png');
   [kanzaki.x, kanzaki.y] = [
     (tileSize * Math.floor(game.canvas.width / tileSize)) / 2 - tileSize / 2,
     (tileSize * Math.floor(game.canvas.height / tileSize)) / 2 - tileSize / 2,
