@@ -1,0 +1,30 @@
+@font-face {
+  font-family: 'g_コミック古印体フォント-教漢版';
+  src: url('./font/g_comickoin_freeR.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: '怨霊';
+  src: url('./font/onryou.TTF') format('truetype');
+}
+
+@font-face {
+  font-family: 'あずきフォント';
+  src: url('./font/azuki.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: '和田研細丸ゴシック';
+  src: url('./font/wlmaru2004emojip.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'たぬき油性マジック';
+  src: url('./font/TanukiMagic.ttf') format('truetype');
+}
+
+$koin: 'g_コミック古印体フォント-教漢版';
+$onryo: '怨霊';
+$azuki: 'あずきフォント';
+$wadaken: '和田研細丸ゴシック';
+$tanuki: 'たぬき油性マジック';
