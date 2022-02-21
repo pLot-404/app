@@ -1,6 +1,7 @@
-import React, { useState, useEffect, useRef } from 'react';
-import Sprite from './modules/Sprite';
-import useWindowSize from './modules/useWindowSize';
+import React, { useState, useEffect, useRef } from "react";
+import Sprite from "./modules/Sprite";
+import useWindowSize from "./modules/useWindowSize";
+import kzImg from "./img/kanzaki.png";
 
 const App: React.VFC = () => {
   const { width: rawWidth, height: rawHeight } = useWindowSize();
@@ -14,7 +15,7 @@ const App: React.VFC = () => {
   /* メソッド定義 */
   const mainloop = () => {
     if (ctx !== null) {
-      ctx.fillStyle = '#000000';
+      ctx.fillStyle = "#000000";
       ctx.fillRect(0, 0, width, height);
 
       for (let i = 0; i <= objes.length - 1; i++) {
@@ -31,17 +32,17 @@ const App: React.VFC = () => {
 
   /* canvas要素を取得・初期化 */
   useEffect(() => {
-    const canvas = document.getElementById('canvas') as HTMLCanvasElement;
+    const canvas = document.getElementById("canvas") as HTMLCanvasElement;
     canvas.width = width;
     canvas.height = height;
-    const context: CanvasRenderingContext2D | null = canvas.getContext('2d');
+    const context: CanvasRenderingContext2D | null = canvas.getContext("2d");
     setCtx(context);
   }, [width, height]);
 
   /* 状態にコンテキストが登録されたらmainloop開始 */
   useEffect(() => {
     if (ctx !== null) {
-      const school: Sprite = new Sprite('./img/school_A5.png');
+      const school: Sprite = new Sprite(kzImg);
       add(school);
       mainloop();
     }
