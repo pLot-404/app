@@ -10,7 +10,7 @@ module.exports = {
     'react-app',
     'react-app/jest',
     'plugin:@typescript-eslint/recommended',
-    'prettier'
+    'prettier',
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
@@ -20,23 +20,26 @@ module.exports = {
     ecmaVersion: 13,
     sourceType: 'module',
   },
-  plugins: [
-    'react',
-    '@typescript-eslint',
-  ],
+  plugins: ['react', '@typescript-eslint'],
   settings: {
     'import/resolver': {
       node: {
-        extensions: ['.js', '.jsx', '.ts', '.tsx'],
+        extensions: ['.js', '.jsx', '.ts', '.tsx', 'json'],
       },
     },
   },
   rules: {
     'react/react-in-jsx-scope': 'off',
-    'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx','ts', '.tsx'] }],
-    'react/function-component-definition':[2, { "namedComponents": "arrow-function" }],
-    "react/prop-types": "off",
-    "import/extensions": [0, "never"], 
-    "no-plusplus": ["error", { "allowForLoopAfterthoughts": true }],
+    'react/jsx-filename-extension': [
+      1,
+      { extensions: ['.js', '.jsx', 'ts', '.tsx'] },
+    ],
+    'react/function-component-definition': [
+      2,
+      { namedComponents: 'arrow-function' },
+    ],
+    'react/prop-types': 'off',
+    'import/extensions': [0, 'never'],
+    'no-plusplus': ['error', { allowForLoopAfterthoughts: true }],
   },
 };
