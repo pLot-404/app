@@ -1,0 +1,11 @@
+{
+  "files": {
+    "main.js": "/app/static/js/main.eecbf588.js",
+    "service-worker.js": "/app/service-worker.js",
+    "index.html": "/app/index.html",
+    "main.eecbf588.js.map": "/app/static/js/main.eecbf588.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.eecbf588.js"
+  ]
+}
