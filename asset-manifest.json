@@ -1,21 +1,18 @@
 {
   "files": {
-    "main.css": "/static/css/main.1fff2ad8.css",
-    "main.js": "/static/js/main.12d20347.js",
-    "static/js/377.0ed652e3.chunk.js": "/static/js/377.0ed652e3.chunk.js",
+    "main.css": "/static/css/main.684c7c8d.css",
+    "main.js": "/static/js/main.a570cbc4.js",
+    "static/js/922.9b587209.chunk.js": "/static/js/922.9b587209.chunk.js",
     "static/media/onryou.TTF": "/static/media/onryou.d0cd4a2e1a5858e10e83.TTF",
     "static/media/wlmaru2004emojip.ttf": "/static/media/wlmaru2004emojip.4afcd4dc5f7b62537ba8.ttf",
     "static/media/TanukiMagic.ttf": "/static/media/TanukiMagic.837029188f8b89ef5fe0.ttf",
     "static/media/azuki.ttf": "/static/media/azuki.8e71322c4021dcaf8e12.ttf",
     "static/media/g_comickoin_freeR.ttf": "/static/media/g_comickoin_freeR.71f8543e8982042a90ce.ttf",
     "service-worker.js": "/service-worker.js",
-    "index.html": "/index.html",
-    "main.1fff2ad8.css.map": "/static/css/main.1fff2ad8.css.map",
-    "main.12d20347.js.map": "/static/js/main.12d20347.js.map",
-    "377.0ed652e3.chunk.js.map": "/static/js/377.0ed652e3.chunk.js.map"
+    "index.html": "/index.html"
   },
   "entrypoints": [
-    "static/css/main.1fff2ad8.css",
-    "static/js/main.12d20347.js"
+    "static/css/main.684c7c8d.css",
+    "static/js/main.a570cbc4.js"
   ]
 }
