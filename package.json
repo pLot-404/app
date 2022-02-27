@@ -30,7 +30,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "GENERATE_SOURCEMAP=false react-scripts build",
     "test": "react-scripts test",
     "deploy": "npm run build && gh-pages -d build",
     "lint": "eslint --ext .ts,.tsx ./src && stylelint src/**/*.{css,scss,sass}",
