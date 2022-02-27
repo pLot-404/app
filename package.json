@@ -29,14 +29,14 @@
     "workbox-streams": "^5.1.4"
   },
   "scripts": {
-    "start": "HTTPS=true react-scripts start",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "lint": "eslint --ext .ts,.tsx ./src",
+    "deploy": "npm run build && gh-pages -d build",
+    "lint": "eslint --ext .ts,.tsx ./src && stylelint src/**/*.{css,scss,sass}",
     "fix": "npm run format && npm run lint:fix",
-    "format": "prettier --write 'src/**/*.{js,jsx,ts,tsx}'",
-    "lint:fix": "eslint --fix 'src/**/*.{js,jsx,ts,tsx}'"
+    "format": "prettier --write 'src/**/*.{js,jsx,ts,tsx,json,css,scss}'",
+    "lint:fix": "eslint --fix 'src/**/*.{js,jsx,ts,tsx}' && stylelint —fix src/**/*.{css,scss,sass}"
   },
   "eslintConfig": {
     "extends": [
@@ -66,6 +66,15 @@
     "eslint-plugin-jsx-a11y": "^6.5.1",
     "eslint-plugin-react": "^7.29.2",
     "eslint-plugin-react-hooks": "^4.3.0",
-    "prettier": "^2.5.1"
+    "gh-pages": "^3.2.3",
+    "node-sass": "^7.0.1",
+    "postcss-scss": "^4.0.3",
+    "prettier": "^2.5.1",
+    "stylelint": "^14.5.3",
+    "stylelint-config-prettier": "^9.0.3",
+    "stylelint-config-recess-order": "^3.0.0",
+    "stylelint-config-standard": "^25.0.0",
+    "stylelint-prettier": "^2.0.0",
+    "stylelint-scss": "^4.1.0"
   }
 }
