@@ -1,4 +1,4 @@
-import './App.module.scss';
+import Style from './App.module.scss';
 
 import useWindowSize from './module/useWindowSize';
 
@@ -11,11 +11,10 @@ const App = () => {
   return (
     <div
       style={{
-        position: 'relative',
         width,
         height,
-        backgroundColor: '#000',
       }}
+      className={Style.body}
     />
   );
 };
