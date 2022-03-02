@@ -50,6 +50,8 @@ module.exports = {
       },
     ],
     'react/function-component-definition': [2, { namedComponents: 'arrow-function' }],
+    'jsx-a11y/alt-text': 'off',
+    'no-plusplus': ['error', { allowForLoopAfterthoughts: true }],
   },
   settings: {
     'import/resolver': {
