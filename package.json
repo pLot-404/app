@@ -1,81 +1,17 @@
 {
   "name": "app",
-  "version": "0.1.0",
   "private": true,
-  "homepage": "./",
-  "dependencies": {
-    "@testing-library/jest-dom": "^5.16.2",
-    "@testing-library/react": "^11.2.7",
-    "@testing-library/user-event": "^12.8.3",
-    "@types/jest": "^26.0.24",
-    "@types/node": "^12.20.46",
-    "@types/react": "^16.14.23",
-    "@types/react-dom": "^16.9.14",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-scripts": "5.0.0",
-    "typescript": "^4.5.5",
-    "web-vitals": "^0.2.4",
-    "workbox-background-sync": "^5.1.4",
-    "workbox-broadcast-update": "^5.1.4",
-    "workbox-cacheable-response": "^5.1.4",
-    "workbox-core": "^5.1.4",
-    "workbox-expiration": "^5.1.4",
-    "workbox-google-analytics": "^5.1.4",
-    "workbox-navigation-preload": "^5.1.4",
-    "workbox-precaching": "^5.1.4",
-    "workbox-range-requests": "^5.1.4",
-    "workbox-routing": "^5.1.4",
-    "workbox-strategies": "^5.1.4",
-    "workbox-streams": "^5.1.4"
-  },
+  "version": "0.0.0",
   "scripts": {
-    "start": "GENERATE_SOURCEMAP=true react-scripts start",
-    "build": "GENERATE_SOURCEMAP=false react-scripts build",
-    "test": "react-scripts test",
-    "deploy": "npm run build && gh-pages -d build",
-    "lint": "eslint --ext .ts,.tsx ./src && stylelint src/**/*.{css,scss,sass}",
-    "fix": "npm run format && npm run lint:fix",
-    "format": "prettier --write 'src/**/*.{js,jsx,ts,tsx,json,css,scss}'",
-    "lint:fix": "eslint --fix 'src/**/*.{js,jsx,ts,tsx}' && stylelint —fix src/**/*.{css,scss,sass}"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
   },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^5.12.1",
-    "@typescript-eslint/parser": "^5.12.1",
-    "eslint": "^8.10.0",
-    "eslint-config-airbnb": "^19.0.4",
-    "eslint-config-prettier": "^8.4.0",
-    "eslint-plugin-import": "^2.25.4",
-    "eslint-plugin-jsx-a11y": "^6.5.1",
-    "eslint-plugin-react": "^7.29.2",
-    "eslint-plugin-react-hooks": "^4.3.0",
-    "gh-pages": "^3.2.3",
-    "node-sass": "^7.0.1",
-    "postcss-scss": "^4.0.3",
-    "prettier": "^2.5.1",
-    "stylelint": "^14.5.3",
-    "stylelint-config-prettier": "^9.0.3",
-    "stylelint-config-recess-order": "^3.0.0",
-    "stylelint-config-standard": "^25.0.0",
-    "stylelint-prettier": "^2.0.0",
-    "stylelint-scss": "^4.1.0"
+    "typescript": "^4.6.3",
+    "vite": "^2.9.2"
+  },
+  "dependencies": {
+    "phaser": "^3.55.2"
   }
 }
